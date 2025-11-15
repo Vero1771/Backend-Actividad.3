@@ -1,0 +1,23 @@
+<header style="background:#222;color:#fff;padding:10px;display:flex;justify-content:space-between;align-items:center;">
+  <div>
+    <strong>Admin Dashboard</strong>
+    <nav style="display:inline-block;margin-left:15px;">
+      <a href="/admin" style="color:#fff;margin-right:10px;">Inicio</a>
+      <a href="/movies" style="color:#fff;margin-right:10px;">Películas</a>
+      <a href="/salas" style="color:#fff;margin-right:10px;">Salas</a>
+      <a href="/funciones" style="color:#fff;margin-right:10px;">Funciones</a>
+      <a href="/ventas" style="color:#fff;margin-right:10px;">Ventas</a>
+    </nav>
+  </div>
+  <div>
+    <button id="logoutBtn" style="padding:6px 10px;">Cerrar sesión</button>
+  </div>
+</header>
+<script>
+  document.getElementById('logoutBtn')?.addEventListener('click', () => {
+    // clear token and redirect to public home
+    localStorage.removeItem('token');
+    document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    window.location = '/';
+  });
+</script>

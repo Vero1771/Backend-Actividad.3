@@ -5,6 +5,8 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <%- include('partials/header') %>
+    <main style="padding:20px;">
       <h1><%= title %></h1>
       <p>Bienvenidos al <%= title %></p>
       <ul>
@@ -15,5 +17,6 @@
         <li><a href="/ventas">Ventas</a></li>
         <li><a href="/tickets">Tickets</a></li>
       </ul>
+    </main>
   </body>
 </html>
