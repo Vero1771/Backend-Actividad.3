@@ -7,6 +7,11 @@ router.get('/', (req, res) => {
   res.render('public/index', { title: 'Bienvenido al Cine' });
 });
 
+// Forbidden page (public)
+router.get('/forbidden', (req, res) => {
+  res.status(403).render('forbidden');
+});
+
 // Public last5 view
 router.get('/movies/last5', (req, res) => {
   const sortBy = req.query.sort || 'year';
