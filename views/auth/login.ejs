@@ -22,8 +22,12 @@
           localStorage.setItem('token', j.token);
           // set cookie so server-side views can read token
           document.cookie = 'token=' + j.token + '; path=/';
-          alert('Autenticado');
-          window.location = '/';
+          // redirect admin users to admin dashboard
+          if (j.user && j.user.role === 'admin') {
+            window.location = '/admin';
+          } else {
+            window.location = '/';
+          }
         } else {
           alert(j.error || j.warning || 'Error');
         }
