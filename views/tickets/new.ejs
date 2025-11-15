@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nuevo Ticket</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Nuevo Ticket</h1>
+    <a href="/tickets">Volver</a>
+    <form action="/tickets/create" method="post">
+      <label>ID Venta:
+        <select name="id_venta" required>
+          <option value="">--Seleccione--</option>
+          <% ventas.forEach(function(v){ %>
+            <option value="<%= v.id %>" <%= (typeof prefillVenta !== 'undefined' && prefillVenta == v.id) ? 'selected' : '' %>><%= v.id %> - <%= v.fecha || '' %></option>
+          <% }) %>
+        </select>
+      </label><br>
+
+      <label>ID Función:
+        <select name="id_funcion" required>
+          <option value="">--Seleccione--</option>
+          <% funciones.forEach(function(f){ %>
+            <option value="<%= f.id %>"><%= f.id %> - <%= f.movie ? f.movie.title : 'Funcion' %> - <%= f.datetime %></option>
+          <% }) %>
+        </select>
+      </label><br>
+
+      <label>Asiento: <input type="text" name="asiento" required></label><br>
+      <label>Precio: <input type="number" step="0.01" name="precio" required></label><br>
+      <button type="submit">Crear</button>
+    </form>
+  </body>
+</html>

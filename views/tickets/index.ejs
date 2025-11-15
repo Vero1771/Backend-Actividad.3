@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tickets</title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+	</head>
+	<body>
+		<h1>Tickets</h1>
+		<a href="/">Volver</a> | <a href="/tickets/new">Agregar ticket</a>
+		<table>
+			<thead><tr><th>ID</th><th>Venta</th><th>Función</th><th>Asiento</th><th>Precio</th><th>Acciones</th></tr></thead>
+			<tbody>
+				<% tickets.forEach(function(t){ %>
+					<tr>
+						<td><a href="/tickets/<%= t.id %>"><%= t.id %></a></td>
+						<td><%= t.id_venta %></td>
+						<td><%= t.id_funcion %></td>
+						<td><%= t.asiento %></td>
+						<td><%= t.precio %></td>
+						<td>
+							<a href="/tickets/<%= t.id %>/edit">Editar</a>
+							<form action="/tickets/<%= t.id %>/delete" method="post" style="display:inline">
+								<button type="submit">Eliminar</button>
+							</form>
+						</td>
+					</tr>
+				<% }); %>
+			</tbody>
+		</table>
+	</body>
+</html>

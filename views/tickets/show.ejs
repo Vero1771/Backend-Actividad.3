@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ticket <%= ticket.id %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Ticket <%= ticket.id %></h1>
+    <a href="/tickets">Volver</a>
+    <ul>
+      <li>ID Venta: <%= ticket.id_venta %></li>
+      <li>ID Función: <%= ticket.id_funcion %></li>
+      <li>Asiento: <%= ticket.asiento %></li>
+      <li>Precio: <%= ticket.precio %></li>
+    </ul>
+    <a href="/tickets/<%= ticket.id %>/edit">Editar</a>
+  </body>
+</html>
