@@ -26,7 +26,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+// Public routes (no auth required)
+app.use('/', publicRouter);
+app.use('/auth', authRouter);
+
+// Admin dashboard and protected routes
+app.use('/admin', indexRouter);
 app.use('/movies', moviesRouter);
 app.use('/salas', salasRouter);
 app.use('/funciones', funcionesRouter);
