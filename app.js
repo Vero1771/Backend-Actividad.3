@@ -11,6 +11,8 @@ var funcionesRouter = require('./routes/funciones');
 var metodosPagoRouter = require('./routes/metodos_pago');
 var ventasRouter = require('./routes/ventas');
 var ticketsRouter = require('./routes/tickets');
+var authRouter = require('./routes/auth');
+var publicRouter = require('./routes/public');
 
 var app = express();
 
