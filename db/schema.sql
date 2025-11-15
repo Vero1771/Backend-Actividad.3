@@ -51,3 +51,11 @@ CREATE TABLE IF NOT EXISTS tickets (
   FOREIGN KEY (id_venta) REFERENCES ventas(id_venta) ON DELETE CASCADE,
   FOREIGN KEY (id_funcion) REFERENCES funciones(id_funcion) ON DELETE SET NULL
 );
+
+-- Usuarios
+CREATE TABLE IF NOT EXISTS usuarios (
+  id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  role ENUM('admin','user') NOT NULL DEFAULT 'user'
+);
