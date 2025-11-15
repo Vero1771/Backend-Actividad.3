@@ -6,7 +6,7 @@
   </head>
   <body>
     <h1>Últimas 5 Películas (orden: <%= sortBy %>)</h1>
-    <a href="/movies">Volver</a>
+    <a href="/">Volver</a>
     <ul>
       <% movies.forEach(function(m){ %>
         <li><%= m.id %> - <%= m.title %> (<%= m.year %>)</li>
