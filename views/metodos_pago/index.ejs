@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Métodos de Pago</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Métodos de Pago</h1>
+    <a href="/">Volver</a> | <a href="/metodos_pago/new">Agregar método de pago</a>
+    <table>
+      <thead><tr><th>ID</th><th>Nombre</th><th>Acciones</th></tr></thead>
+      <tbody>
+        <% metodos.forEach(function(m){ %>
+          <tr>
+            <td><%= m.id %></td>
+            <td><%= m.nombre %></td>
+            <td>
+              <a href="/metodos_pago/<%= m.id %>/edit">Editar</a>
+              <form action="/metodos_pago/<%= m.id %>/delete" method="post" style="display:inline">
+                <button type="submit">Eliminar</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </body>
+</html>
