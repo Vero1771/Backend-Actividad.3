@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const VentaController = require('../controllers/ventaController');
+const MetodoPagoController = require('../controllers/metodoPagoController');
 
 // CRUD API
 router.get('/api', (req, res) => {
@@ -55,3 +56,52 @@ router.get('/api/:id/tickets', (req, res) => {
 });
 
 module.exports = router;
+
+// --- View routes (EJS) ---
+router.get('/', (req, res) => {
+  VentaController.index()
+    .then(ventas => res.render('ventas/index', { ventas }))
+    .catch(err => res.status(err.status || 500).send(err.message || err));
+});
+
+router.get('/new', (req, res) => {
+  MetodoPagoController.index()
+    .then(metodos => res.render('ventas/new', { metodos }))
+    .catch(err => res.status(err.status || 500).send(err.message || err));
+});
+
+router.post('/create', (req, res) => {
+  VentaController.create(req.body)
+    .then(() => res.redirect('/ventas'))
+    .catch(err => res.status(err.status || 500).send(err.message || err));
+});
+
+router.get('/:id', (req, res) => {
+  Promise.all([VentaController.findByIdWithMetodo(req.params.id), VentaController.ticketsByVenta(req.params.id)])
+    .then(([venta, tickets]) => {
+      if (!venta) return res.status(404).send('Not found');
+      res.render('ventas/show', { venta, tickets });
+    })
+    .catch(err => res.status(err.status || 500).send(err.message || err));
+});
+
+router.get('/:id/edit', (req, res) => {
+  Promise.all([VentaController.findById(req.params.id), MetodoPagoController.index()])
+    .then(([venta, metodos]) => {
+      if (!venta) return res.status(404).send('Not found');
+      res.render('ventas/edit', { venta, metodos });
+    })
+    .catch(err => res.status(err.status || 500).send(err.message || err));
+});
+
+router.post('/:id/update', (req, res) => {
+  VentaController.update(req.params.id, req.body)
+    .then(() => res.redirect('/ventas'))
+    .catch(err => res.status(err.status || 500).send(err.message || err));
+});
+
+router.post('/:id/delete', (req, res) => {
+  VentaController.delete(req.params.id)
+    .then(() => res.redirect('/ventas'))
+    .catch(err => res.status(err.status || 500).send(err.message || err));
+});

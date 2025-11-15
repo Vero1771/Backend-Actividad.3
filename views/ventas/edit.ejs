@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editar Venta</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Editar Venta</h1>
+    <a href="/ventas">Volver</a>
+    <form action="/ventas/<%= venta.id %>/update" method="post">
+      <label>Método de pago:
+        <select name="id_metodo">
+          <option value="">--Seleccione--</option>
+          <% metodos.forEach(function(m){ %>
+            <option value="<%= m.id %>" <%= (venta.id_metodo == m.id) ? 'selected' : '' %>><%= m.nombre %></option>
+          <% }) %>
+        </select>
+      </label><br>
+      <label>Fecha: <input type="datetime-local" name="fecha" value="<%= venta.fecha %>"></label><br>
+      <label>Total: <input type="number" step="0.01" name="total" value="<%= venta.total %>"></label><br>
+      <button type="submit">Guardar</button>
+    </form>
+  </body>
+</html>

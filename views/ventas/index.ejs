@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ventas</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Ventas</h1>
+    <a href="/">Volver</a> | <a href="/ventas/new">Agregar venta</a>
+    <table>
+      <thead><tr><th>ID</th><th>Método</th><th>Fecha</th><th>Total</th><th>Acciones</th></tr></thead>
+      <tbody>
+        <% ventas.forEach(function(v){ %>
+          <tr>
+            <td><a href="/ventas/<%= v.id %>"><%= v.id %></a></td>
+            <td><%= v.metodo ? v.metodo.nombre : v.id_metodo %></td>
+            <td><%= v.fecha %></td>
+            <td><%= v.total %></td>
+            <td>
+              <a href="/ventas/<%= v.id %>/edit">Editar</a>
+              <form action="/ventas/<%= v.id %>/delete" method="post" style="display:inline">
+                <button type="submit">Eliminar</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </body>
+</html>
