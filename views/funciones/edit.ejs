@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editar Función</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Editar Función</h1>
+    <a href="/funciones">Volver</a>
+    <form action="/funciones/<%= func.id %>/update" method="post">
+      <label>Película:
+        <select name="movieId">
+          <option value="">-- ninguna --</option>
+          <% movies.forEach(function(m){ %>
+            <option value="<%= m.id %>" <% if (func.movieId==m.id) { %>selected<% } %>><%= m.title %></option>
+          <% }) %>
+        </select>
+      </label><br>
+      <label>Sala:
+        <select name="salaId">
+          <option value="">-- ninguna --</option>
+          <% salas.forEach(function(s){ %>
+            <option value="<%= s.id %>" <% if (func.salaId==s.id) { %>selected<% } %>><%= s.name %></option>
+          <% }) %>
+        </select>
+      </label><br>
+      <label>Fecha/Hora: <input name="datetime" type="datetime-local" value="<%= func.datetime %>"></label><br>
+      <button type="submit">Actualizar</button>
+    </form>
+  </body>
+</html>

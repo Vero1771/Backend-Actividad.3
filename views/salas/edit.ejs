@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editar Sala</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Editar Sala</h1>
+    <a href="/salas">Volver</a>
+    <form action="/salas/<%= sala.id %>/update" method="post">
+      <label>Nombre: <input name="name" value="<%= sala.name %>"></label><br>
+      <label>Capacidad: <input name="capacity" type="number" value="<%= sala.capacity %>"></label><br>
+      <button type="submit">Actualizar</button>
+    </form>
+  </body>
+</html>

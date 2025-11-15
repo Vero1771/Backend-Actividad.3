@@ -1,0 +1,16 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: #333;
+  margin: 20px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+table, th, td { border: 1px solid #ccc; }
+th, td { padding: 6px; text-align: left; }
+form { margin: 6px 0; }
+button { margin-left: 4px; }

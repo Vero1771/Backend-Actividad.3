@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Películas</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Películas</h1>
+    <a href="/">Volver</a> | <a href="/movies/new">Agregar película</a> | <a href="/movies/last5">Últimas 5</a>
+    <table>
+      <thead><tr><th>ID</th><th>Título</th><th>Duración</th><th>Año</th><th>Acciones</th></tr></thead>
+      <tbody>
+        <% movies.forEach(function(m){ %>
+          <tr>
+            <td><%= m.id %></td>
+            <td><%= m.title %></td>
+            <td><%= m.duration %> min</td>
+            <td><%= m.year %></td>
+            <td>
+              <a href="/movies/<%= m.id %>/edit">Editar</a>
+              <form action="/movies/<%= m.id %>/delete" method="post" style="display:inline">
+                <button type="submit">Eliminar</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </body>
+</html>

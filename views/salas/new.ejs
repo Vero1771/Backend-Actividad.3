@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nueva Sala</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Agregar Sala</h1>
+    <a href="/salas">Volver</a>
+    <form action="/salas/create" method="post">
+      <label>Nombre: <input name="name" required></label><br>
+      <label>Capacidad: <input name="capacity" type="number" required></label><br>
+      <button type="submit">Guardar</button>
+    </form>
+  </body>
+</html>

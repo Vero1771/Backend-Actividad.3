@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Funciones</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Funciones</h1>
+    <a href="/">Volver</a> | <a href="/funciones/new">Agregar función</a>
+
+    <h3>Filtrar por rango de fecha</h3>
+    <form method="get" action="/funciones">
+      <label>Desde: <input type="datetime-local" name="start" value="<%= start || '' %>"></label>
+      <label>Hasta: <input type="datetime-local" name="end" value="<%= end || '' %>"></label>
+      <button type="submit">Filtrar</button>
+    </form>
+
+    <table>
+      <thead><tr><th>ID</th><th>Película</th><th>Sala</th><th>Fecha/Hora</th><th>Acciones</th></tr></thead>
+      <tbody>
+        <% funciones.forEach(function(f){ %>
+          <tr>
+            <td><%= f.id %></td>
+            <td><%= f.movie ? f.movie.title : '---' %></td>
+            <td><%= f.sala ? f.sala.name : '---' %></td>
+            <td><%= f.datetime %></td>
+            <td>
+              <a href="/funciones/<%= f.id %>/edit">Editar</a>
+              <form action="/funciones/<%= f.id %>/delete" method="post" style="display:inline">
+                <button type="submit">Eliminar</button>
+              </form>
+              <form action="/funciones/<%= f.id %>/unlink?which=movie" method="post" style="display:inline">
+                <button type="submit">Desvincular Película</button>
+              </form>
+              <form action="/funciones/<%= f.id %>/unlink?which=sala" method="post" style="display:inline">
+                <button type="submit">Desvincular Sala</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

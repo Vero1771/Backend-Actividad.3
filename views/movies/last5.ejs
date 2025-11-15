@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Últimas 5 Películas</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Últimas 5 Películas (orden: <%= sortBy %>)</h1>
+    <a href="/movies">Volver</a>
+    <ul>
+      <% movies.forEach(function(m){ %>
+        <li><%= m.id %> - <%= m.title %> (<%= m.year %>)</li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

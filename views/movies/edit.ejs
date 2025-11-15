@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editar Película</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Editar Película</h1>
+    <a href="/movies">Volver</a>
+    <form action="/movies/<%= movie.id %>/update" method="post">
+      <label>Título: <input name="title" value="<%= movie.title %>"></label><br>
+      <label>Duración (min): <input name="duration" type="number" value="<%= movie.duration %>"></label><br>
+      <label>Año: <input name="year" type="number" value="<%= movie.year %>"></label><br>
+      <button type="submit">Actualizar</button>
+    </form>
+  </body>
+</html>

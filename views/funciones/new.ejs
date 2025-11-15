@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nueva Función</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Agregar Función</h1>
+    <a href="/funciones">Volver</a>
+    <form action="/funciones/create" method="post">
+      <label>Película:
+        <select name="movieId">
+          <option value="">-- ninguna --</option>
+          <% movies.forEach(function(m){ %>
+            <option value="<%= m.id %>"><%= m.title %> (<%= m.year %>)</option>
+          <% }) %>
+        </select>
+      </label><br>
+      <label>Sala:
+        <select name="salaId">
+          <option value="">-- ninguna --</option>
+          <% salas.forEach(function(s){ %>
+            <option value="<%= s.id %>"><%= s.name %> (cap: <%= s.capacity %>)</option>
+          <% }) %>
+        </select>
+      </label><br>
+      <label>Fecha/Hora: <input name="datetime" type="datetime-local" required></label><br>
+      <button type="submit">Guardar</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Salas</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Salas</h1>
+    <a href="/">Volver</a> | <a href="/salas/new">Agregar sala</a>
+    <table>
+      <thead><tr><th>ID</th><th>Nombre</th><th>Capacidad</th><th>Acciones</th></tr></thead>
+      <tbody>
+        <% salas.forEach(function(s){ %>
+          <tr>
+            <td><%= s.id %></td>
+            <td><a href="/salas/<%= s.id %>"><%= s.name %></a></td>
+            <td><%= s.capacity %></td>
+            <td>
+              <a href="/salas/<%= s.id %>/edit">Editar</a>
+              <form action="/salas/<%= s.id %>/delete" method="post" style="display:inline">
+                <button type="submit">Eliminar</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>
