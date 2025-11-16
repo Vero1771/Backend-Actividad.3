@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Compra Completa</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Compra Realizada</h1>
+    <p>Venta ID: <%= venta.id %></p>
+    <p>Asientos comprados: <%= seats.join(', ') %></p>
+    <p>Total: <%= total.toFixed(2) %></p>
+    <p><a href="/user">Volver al dashboard</a></p>
+  </body>
+</html>

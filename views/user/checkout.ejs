@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checkout</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('../partials/user_header') %>
+    <h1>Confirmar Compra</h1>
+      <p>Pelicula: <%= funcion && funcion.movie ? funcion.movie.title : 'N/A' %></p>
+    <p>Fecha: <%= funcion.datetime %></p>
+    <p>Asientos: <%= seats.join(', ') %></p>
+    <p>Precio por asiento: <%= price.toFixed(2) %></p>
+    <p>Total: <%= total.toFixed(2) %></p>
+    <form action="/user/complete" method="post">
+      <input type="hidden" name="funcionId" value="<%= funcion.id %>">
+      <input type="hidden" name="seats" value="<%= seats.join(',') %>">
+      <label>Método de pago:</label>
+        <select name="id_metodo">
+          <% metodos.forEach(m => { %>
+            <option value="<%= m.id %>"><%= m.nombre %></option>
+          <% }) %>
+        </select>
+      <button type="submit">Pagar</button>
+    </form>
+    <p><a href="/user">Volver</a></p>
+  </body>
+</html>

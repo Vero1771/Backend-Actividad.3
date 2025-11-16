@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Comprar Tickets</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('../partials/user_header') %>
+    <h1>Comprar Tickets para la función</h1>
+      <p><strong>Pelicula:</strong> <%= func && func.movie ? func.movie.title : 'N/A' %></p>
+    <p><strong>Fecha:</strong> <%= func.datetime %></p>
+    <p><strong>Sala:</strong> <%= sala ? sala.name : 'N/A' %> — Precio por asiento: <%= sala ? sala.price.toFixed(2) : '0.00' %></p>
+    <form action="/user/checkout" method="post" onsubmit="if(!document.querySelector('[name=seats]').value.trim()){ alert('Debe ingresar al menos un asiento'); return false; }">
+      <input type="hidden" name="funcionId" value="<%= func.id %>">
+      <label>Asientos (uno por línea o separados por comas):</label><br>
+      <textarea name="seats" rows="5" cols="40" required></textarea><br>
+      <button type="submit">Continuar</button>
+    </form>
+    <p><a href="/user">Volver</a></p>
+  </body>
+</html>
