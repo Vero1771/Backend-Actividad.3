@@ -1,5 +1,5 @@
 const SalaStore = require('../models/sala');
-const { badRequest, isNonEmptyString, isPositiveInteger } = require('../utils/validators');
+const { badRequest, isNonEmptyString, isPositiveInteger, isNonNegativeNumber } = require('../utils/validators');
 
 class SalaController {
   static index() {
