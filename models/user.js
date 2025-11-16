@@ -28,6 +28,38 @@ class UserStore {
         .catch(reject);
     });
   }
+
+  static findAll() {
+    return new Promise((resolve, reject) => {
+      pool.query('SELECT id_usuario, email, role FROM usuarios')
+        .then(([rows]) => resolve(rows))
+        .catch(reject);
+    });
+  }
+
+  static update(id, { email, passwordHash, role }) {
+    return new Promise((resolve, reject) => {
+      const fields = [];
+      const values = [];
+      if (email !== undefined) { fields.push('email = ?'); values.push(email); }
+      if (passwordHash !== undefined) { fields.push('password = ?'); values.push(passwordHash); }
+      if (role !== undefined) { fields.push('role = ?'); values.push(role); }
+      if (!fields.length) return resolve(null);
+      values.push(id);
+      const sql = `UPDATE usuarios SET ${fields.join(', ')} WHERE id_usuario = ?`;
+      pool.query(sql, values)
+        .then(([result]) => resolve(result.affectedRows ? { id, email, role } : null))
+        .catch(reject);
+    });
+  }
+
+  static delete(id) {
+    return new Promise((resolve, reject) => {
+      pool.query('DELETE FROM usuarios WHERE id_usuario = ?', [id])
+        .then(([result]) => resolve(!!result.affectedRows))
+        .catch(reject);
+    });
+  }
 }
 
 module.exports = UserStore;

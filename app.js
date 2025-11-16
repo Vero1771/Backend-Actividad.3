@@ -14,6 +14,7 @@ var ticketsRouter = require('./routes/tickets');
 var authRouter = require('./routes/auth');
 var publicRouter = require('./routes/public');
 var userRouter = require('./routes/user');
+var usersAdminRouter = require('./routes/users');
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', publicRouter);
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
+app.use('/users', usersAdminRouter);
 
 // Admin dashboard and protected routes
 app.use('/admin', indexRouter);
