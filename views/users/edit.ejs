@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+<main style="padding:20px;">
+  <h2>Editar usuario</h2>
+  <form action="/users/<%= user.id_usuario %>/update" method="post">
+    <div>
+      <label>Email: <input type="email" name="email" value="<%= user.email %>" required></label>
+    </div>
+    <div>
+      <label>Nueva contraseña (dejar vacío para mantener): <input type="password" name="password"></label>
+    </div>
+    <div>
+      <label>Rol:
+        <select name="role">
+          <option value="user" <%= user.role === 'user' ? 'selected' : '' %>>user</option>
+          <option value="admin" <%= user.role === 'admin' ? 'selected' : '' %>>admin</option>
+        </select>
+      </label>
+    </div>
+    <div style="margin-top:10px;"><button type="submit">Guardar</button> <a href="/users">Cancelar</a></div>
+  </form>
+</main>

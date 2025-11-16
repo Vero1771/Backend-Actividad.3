@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+<main style="padding:20px;">
+  <h2>Crear usuario</h2>
+  <form action="/users/create" method="post">
+    <div>
+      <label>Email: <input type="email" name="email" required></label>
+    </div>
+    <div>
+      <label>Contraseña: <input type="password" name="password" required></label>
+    </div>
+    <div>
+      <label>Rol:
+        <select name="role">
+          <option value="user">user</option>
+          <option value="admin">admin</option>
+        </select>
+      </label>
+    </div>
+    <div style="margin-top:10px;"><button type="submit">Crear</button> <a href="/users">Cancelar</a></div>
+  </form>
+</main>
