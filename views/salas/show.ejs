@@ -6,8 +6,9 @@
   </head>
   <body>
     <h1>Sala: <%= sala.name %></h1>
-    <a href="/salas">Volver</a>
+    <a href="/admin">Volver</a>
     <p>ID: <%= sala.id %></p>
     <p>Capacidad: <%= sala.capacity %></p>
+    <p>Precio por asiento: <%= sala.price.toFixed(2) %></p>
   </body>
 </html>

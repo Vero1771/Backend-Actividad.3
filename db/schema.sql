@@ -12,7 +12,8 @@ CREATE TABLE IF NOT EXISTS peliculas (
 CREATE TABLE IF NOT EXISTS salas (
   id_sala INT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(255) NOT NULL,
-  capacidad INT
+  capacidad INT,
+  precio DECIMAL(10,2) NOT NULL DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS funciones (

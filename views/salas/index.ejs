@@ -8,13 +8,14 @@
     <h1>Salas</h1>
     <a href="/admin">Volver</a> | <a href="/salas/new">Agregar sala</a>
     <table>
-      <thead><tr><th>ID</th><th>Nombre</th><th>Capacidad</th><th>Acciones</th></tr></thead>
+      <thead><tr><th>ID</th><th>Nombre</th><th>Capacidad</th><th>Precio</th><th>Acciones</th></tr></thead>
       <tbody>
         <% salas.forEach(function(s){ %>
           <tr>
             <td><%= s.id %></td>
             <td><a href="/salas/<%= s.id %>"><%= s.name %></a></td>
             <td><%= s.capacity %></td>
+            <td><%= s.price.toFixed(2) %></td>
             <td>
               <a href="/salas/<%= s.id %>/edit">Editar</a>
               <form action="/salas/<%= s.id %>/delete" method="post" style="display:inline">

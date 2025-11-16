@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2025 a las 03:29:48
+-- Tiempo de generación: 16-11-2025 a las 06:27:38
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -171,23 +171,24 @@ INSERT INTO `peliculas_categorias` (`id_pelicula`, `id_categoria`) VALUES
 CREATE TABLE `salas` (
   `id_sala` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `capacidad` int(11) NOT NULL
+  `capacidad` int(11) NOT NULL,
+  `precio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `salas`
 --
 
-INSERT INTO `salas` (`id_sala`, `nombre`, `capacidad`) VALUES
-(1, 'Sala IMAX', 200),
-(2, 'Sala VIP', 100),
-(3, 'Sala 3D', 150),
-(4, 'Sala Estándar', 120),
-(5, 'Sala 1', 116),
-(6, 'Sala 2 ', 125),
-(7, 'Sala 4', 122),
-(8, 'Sala 5', 121),
-(10, 'Sala 6', 165);
+INSERT INTO `salas` (`id_sala`, `nombre`, `capacidad`, `precio`) VALUES
+(1, 'Sala IMAX', 200, 300),
+(2, 'Sala VIP', 100, 350),
+(3, 'Sala 3D', 150, 100),
+(4, 'Sala Estándar', 120, 50),
+(5, 'Sala 1', 116, 60),
+(6, 'Sala 2 ', 125, 60),
+(7, 'Sala 4', 122, 60),
+(8, 'Sala 5', 121, 60),
+(10, 'Sala 6', 165, 60);
 
 -- --------------------------------------------------------
 
@@ -259,7 +260,17 @@ INSERT INTO `tickets` (`id_ticket`, `id_venta`, `id_funcion`, `asiento`, `precio
 (49, 13, 18, 'G12', 500.00),
 (53, 14, 18, 'B2', 100.00),
 (54, 15, 18, 'A1', 200.00),
-(55, 14, 18, 'A1', 100.00);
+(55, 14, 18, 'A1', 100.00),
+(56, 16, 16, 'E5', 300.00),
+(57, 16, 16, 'F6', 300.00),
+(58, 16, 16, 'G7', 300.00),
+(59, 16, 16, 'H8', 300.00),
+(60, 17, 16, 'A10', 300.00),
+(61, 17, 16, 'A11', 300.00),
+(62, 17, 16, 'A12', 300.00),
+(63, 18, 11, 'A20', 50.00),
+(64, 18, 11, 'A21', 50.00),
+(65, 18, 11, 'A22', 50.00);
 
 -- --------------------------------------------------------
 
@@ -314,7 +325,10 @@ INSERT INTO `ventas` (`id_venta`, `id_metodo`, `fecha`, `total`) VALUES
 (12, 1, '2025-10-30 14:00:00', 1500.00),
 (13, 2, '2025-10-28 16:00:00', 2000.00),
 (14, 2, '2025-11-14 10:20:00', 500.00),
-(15, 2, '2025-11-14 13:38:00', 200.00);
+(15, 2, '2025-11-14 13:38:00', 200.00),
+(16, 3, '2025-11-16 04:16:56', 1200.00),
+(17, 2, '2025-11-16 04:19:47', 900.00),
+(18, 1, '2025-11-16 05:23:36', 150.00);
 
 --
 -- Índices para tablas volcadas
@@ -419,7 +433,7 @@ ALTER TABLE `salas`
 -- AUTO_INCREMENT de la tabla `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -431,7 +445,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restricciones para tablas volcadas
