@@ -22,11 +22,11 @@
           localStorage.setItem('token', j.token);
           // set cookie so server-side views can read token
           document.cookie = 'token=' + j.token + '; path=/';
-          // redirect admin users to admin dashboard
+          // redirect admin users to admin dashboard, others to user dashboard
           if (j.user && j.user.role === 'admin') {
             window.location = '/admin';
           } else {
-            window.location = '/';
+            window.location = '/user';
           }
         } else {
           alert(j.error || j.warning || 'Error');

@@ -1,0 +1,19 @@
+<header style="background:#286090;color:#fff;padding:10px;display:flex;justify-content:space-between;align-items:center;">
+  <div>
+    <strong>Usuario</strong>
+    <nav style="display:inline-block;margin-left:15px;">
+      <a href="/user" style="color:#fff;margin-right:10px;">Dashboard</a>
+      <a href="/movies/last5" style="color:#fff;margin-right:10px;">Últimas 5</a>
+    </nav>
+  </div>
+  <div>
+    <button id="logoutUserBtn" style="padding:6px 10px;">Cerrar sesión</button>
+  </div>
+</header>
+<script>
+  document.getElementById('logoutUserBtn')?.addEventListener('click', () => {
+    localStorage.removeItem('token');
+    document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    window.location = '/';
+  });
+</script>

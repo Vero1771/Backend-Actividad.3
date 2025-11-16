@@ -13,6 +13,7 @@ var ventasRouter = require('./routes/ventas');
 var ticketsRouter = require('./routes/tickets');
 var authRouter = require('./routes/auth');
 var publicRouter = require('./routes/public');
+var userRouter = require('./routes/user');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Public routes (no auth required)
 app.use('/', publicRouter);
 app.use('/auth', authRouter);
+app.use('/user', userRouter);
 
 // Admin dashboard and protected routes
 app.use('/admin', indexRouter);

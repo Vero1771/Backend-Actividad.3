@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard Usuario</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Dashboard Usuario</h1>
+    <%- include('../partials/user_header') %>
+    <p>Filtrar por fecha:</p>
+    <form method="get" action="/user">
+      <input name="start" type="date" value="<%= start ? (new Date(start)).toISOString().slice(0,10) : '' %>">
+      <input name="end" type="date" value="<%= end ? (new Date(end)).toISOString().slice(0,10) : '' %>">
+      <button>Filtrar</button>
+    </form>
+    <ul>
+      <% funciones.forEach(f => { %>
+        <li>
+          <strong><%= f.movie ? f.movie.title : 'Sin película' %></strong> — <%= f.datetime %> — Sala: <%= f.sala ? f.sala.name : 'N/A' %>
+          <a href="/user/buy?funcionId=<%= f.id %>">Comprar tickets</a>
+        </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>
